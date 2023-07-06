@@ -9,15 +9,16 @@ const Create = () => {
     const submit = (e)=>{
         e.preventDefault()
 
-        const blog = {title, body, author};
+        const blog = {author, title, body};
+        console.log(blog)
         setIsPending(true)
 
-        fetch('http://localhost:8000', {
+        fetch('http://localhost:8000/blogs', {
             method : 'POST',
-            headrs :{'Content-Type': 'application/json'},
+            headers :{"Content-Type": "application/json"},
             body : JSON.stringify(blog),
         })
-            .then(data =>{
+            .then(()=>{
                 console.log('blog created');
                 setIsPending(false)
             })
@@ -31,10 +32,8 @@ const Create = () => {
         <div className="Create">
             <h1 className="formdata">Create page</h1>
             <form
+            onSubmit={submit}
             className="creatform">
-                <form onSubmit={(e)=>{
-                       submit(e)     
-                        }}> 
                     <label>Title</label>
                     <input 
                     type="text"
@@ -65,8 +64,6 @@ const Create = () => {
                     { !isPending &&<button> Post</button>}
                     { isPending &&<button disabled> Posting...</button>}
                     </div>
-                    
-                </form>
 
              </form>
         </div>

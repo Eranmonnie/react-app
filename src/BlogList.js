@@ -10,7 +10,7 @@ const blogs = props.blogs
                 <div className="blogs" key={blog.id}>
                     <Link to={`blogs/${blog.id}`}> 
                         <h2>{blog.title}</h2>
-                        <p>written by {blog.name}</p>
+                        <p>written by {blog.author}</p>
                     </Link>
                 </div>
         ); })}
