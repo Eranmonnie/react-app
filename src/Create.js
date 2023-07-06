@@ -1,7 +1,9 @@
+import { useState } from "react";
+
 const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    const [user, setUser] = useState('');
+    const [author, setAuthor] = useState('');
 
     return ( 
         <div className="Create">
@@ -26,10 +28,10 @@ const Create = () => {
                     }}
                     />
 
-                    <label>User</label>
+                    <label>Author</label>
                     <select
                      value={user}
-                     onChange={(e)=>{setUser(e.target.value);
+                     onChange={(e)=>{setAuthor(e.target.value);
                      }}>
                         <option value="mario">mario</option>
                         <option value="yoshi">yoshi</option>
