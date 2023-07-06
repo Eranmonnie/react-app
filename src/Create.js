@@ -4,13 +4,37 @@ const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('');
+    const [isPending, setIsPending] = useState(false);
+
+    const submit = (e)=>{
+        e.preventDefault()
+
+        const blog = {title, body, author};
+        setIsPending(true)
+
+        fetch('http://localhost:8000', {
+            method : 'POST',
+            headrs :{'Content-Type': 'application/json'},
+            body : Json.stringify(blog),
+        })
+            .then(data =>{
+                console.log('blog created');
+                setIsPending(false)
+            })
+                .catch(err=>{
+                    console.log(err);
+                })
+
+    }
 
     return ( 
         <div className="Create">
             <h1 className="formdata">Create page</h1>
             <form
             className="creatform">
-                <form> 
+                <form onSubmit={(e)=>{
+                       submit(e)     
+                        }}> 
                     <label>Title</label>
                     <input 
                     type="text"
@@ -30,7 +54,7 @@ const Create = () => {
 
                     <label>Author</label>
                     <select
-                     value={user}
+                     value={author}
                      onChange={(e)=>{setAuthor(e.target.value);
                      }}>
                         <option value="mario">mario</option>
@@ -38,9 +62,8 @@ const Create = () => {
                     </select>
                     
                     <div className="button">
-                        <button>
-                            Post
-                        </button>
+                    { !isPending &&<button> Post</button>}
+                    { isPending &&<button disabled> Posting...</button>}
                     </div>
                     
                 </form>
