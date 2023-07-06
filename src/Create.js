@@ -1,6 +1,9 @@
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 const Create = () => {
+    const navigate = useNavigate();
+
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('');
@@ -10,7 +13,7 @@ const Create = () => {
         e.preventDefault()
 
         const blog = {author, title, body};
-        console.log(blog)
+
         setIsPending(true)
 
         fetch('http://localhost:8000/blogs', {
@@ -21,10 +24,12 @@ const Create = () => {
             .then(()=>{
                 console.log('blog created');
                 setIsPending(false)
+                navigate('/') //redirect for after post request
             })
                 .catch(err=>{
                     console.log(err);
                 })
+               
 
     }
 
