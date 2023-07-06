@@ -32,10 +32,15 @@
   color: rgb(223, 61, 61);
 }
 
-.home{
+.App{
   margin: 40px auto;
   max-width: 600px;
   padding: 20px;
+}
+
+.blogtitle{
+    margin-top: 0.5em;
+    margin-bottom: 1em;
 }
 
 .blogs{
@@ -54,6 +59,39 @@
   color: rgb(223, 61, 61);
 }
 
+input, textarea, select{
+  display:block;
+  width: 100%;
+  padding: 6px 10px;
+  margin:10px 0px; 
+}
+
+.Create{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+
 .blogs a{
   text-decoration: none;
+}
+
+.button{ 
+  display: flex;
+  justify-content: right;
+}
+button{
+  padding: 7px 10px;
+  border: none;
+  background-color: rgb(216, 43, 43);
+  border-radius: 7px;
+  color: white;
+}
+button:hover{
+    background-color: rgb(143, 27, 27);
+}
+
+.formdata{
+  margin-bottom: 0.5em;
+  max-width: 400px;
 }
