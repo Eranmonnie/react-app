@@ -1,4 +1,4 @@
-
+import NotFound from './NotFound';
 import Nav from './Nav';
 import Home from './Home';
 import Create from './Create';
@@ -16,6 +16,7 @@ function App() {
                   <Route exact path='/' element={<Home/>} />
                   <Route exact path='/create' element={<Create/>} />
                   <Route exact path='/blogs/:id' element={<BlogDetails/>} />
+                  <Route exact path='*' element={<NotFound/>} />
               </Routes>
             </div>
         </div>
