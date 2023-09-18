@@ -7,11 +7,7 @@ const useFetch = (url)=>{
     const [errors, setErrors] = useState(null);
 
     useEffect(()=>{
-
         const Abort  =  new AbortController();
-
-        
-
         fetch(url, {signal: Abort.signal} )
             .then(res=>{
                 if (! res.ok){
